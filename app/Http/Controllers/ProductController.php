@@ -137,4 +137,13 @@ class ProductController extends Controller
             return redirect('/home');
         }
     }
+
+        public function delete($id)
+    {
+        $prod = Product::findOrFail($id);
+        $prod->delete();
+
+        return redirect('/home'); 
+    }
+
 }

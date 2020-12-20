@@ -42,4 +42,9 @@ Route::get('/details/{id}', 'DetailsController@index');
 
 Route::get('/update/{id}', 'UpdateController@index');
 Route::patch('/products/{id}/update', 'ProductController@update');
+Route::patch('/products/{id}/delete', 'ProductController@delete');
 
+Route::get('/managec', 'CategoryController@show');
+Route::patch('/managec/{id}/delete', 'CategoryController@delete');
+
+Route::get('/updatec/{id}', 'UpdatecController@index');

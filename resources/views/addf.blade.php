@@ -3,7 +3,7 @@
 
 <div style="display: flex" class="section">
 
-<div class="card" style="margin-left:50px; width: 1150px">
+<div class="card" style="margin-left:400px; width: 1150px">
     <div class="card-header">Add New Flower</div>
 
     <div class="card-body">

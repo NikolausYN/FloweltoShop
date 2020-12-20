@@ -45,8 +45,15 @@
                 <div class="card-body">
                   <a href="/details/{{$flo -> id}}" class="btn" style="font-size: 25px">{{$flo -> productname}}</a>
                   <h5 class="card-title" style="color: pink"> Rp. {{$flo -> productprice}}</h5>
-                  <a style="background-color:pink; border-color:pink" href="" class="btn btn-primary">Delete Flower</a>
-                  <a style="margin-top:10px; background-color:pink; border-color:pink" href="/update/{{$flo -> id}}" class="btn btn-primary">Update Flower</a>
+                  <form method="POST" action="/products/{{$flo->id}}/delete">
+                    {{ csrf_field() }}
+                    {{ method_field('PATCH') }}
+            
+                    <div class="form-group">
+                        <input style="background-color:pink; border-color:pink" type="submit" class="btn btn-danger delete-user" value="Delete Product">
+                    </div>
+                </form>
+                  <a style="background-color:pink; border-color:pink" href="/update/{{$flo -> id}}" class="btn btn-primary">Update Flower</a>
 
                 </div>
               </div>

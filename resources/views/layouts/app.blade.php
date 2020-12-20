@@ -89,7 +89,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/addf">Add Flower</a>
-                                    <a class="dropdown-item" href="#">Manage Categories</a>
+                                    <a class="dropdown-item" href="/managec">Manage Categories</a>
                                     <a class="dropdown-item" href="/repassword">Change Password</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -125,8 +125,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">My Cart</a>
-                                    <a class="dropdown-item" href="#">Transaction History</a>
+                                    <a class="dropdown-item" href="/cart">My Cart</a>
+                                    <a class="dropdown-item" href="/trans">Transaction History</a>
                                     <a class="dropdown-item" href="/repassword">Change Password</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

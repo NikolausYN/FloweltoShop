@@ -9,7 +9,7 @@ class UpdateController extends Controller
 {
     public function index($id)
     {
-        $id = Product::find($id);
+        $id = Product::find($id)->first();
         return view('update', ['prod'=>$id]);
     }
 }
