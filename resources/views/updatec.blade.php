@@ -3,10 +3,10 @@
 
 <div style="display: flex" class="section">
 <div class="img">
-<img src="/image/{{$cate -> catimg}}" style="margin-left: 70px; height: 580px; width: 580px" alt="Flower">
+<img src="{{$cate -> catimg}}" style="margin-left: 70px; height: 580px; width: 580px" alt="Flower">
 </div>
 
-<div class="card" style="margin-left:50px; width: 1150px">
+<div class="card" style="margin-left:50px; width: 1150px; height: 300px">
     <div class="card-header">Update Category</div>
 
     <div class="card-body">

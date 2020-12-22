@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function joinCart(){
+        return $this->hasMany('App\Cart', 'userid');
+    }
+
+    public function joinTransaction(){
+        return $this->hasMany('App\Transaction', 'userid');
+    }
 }

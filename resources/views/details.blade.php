@@ -11,16 +11,16 @@
     <h3>Rp. {{$prod -> productprice}}</h3>
     <h4 style="margin-top:20px">{{$prod -> productdesc}}</h4>
     @guest
-    <form style="margin-top: 20px; " action="/products/{{$prod -> id}}/searchharga" method="GET">
-        <input type="text" name="search" placeholder="Enter Quantity..." value="{{ old('search') }}">
+    <form style="margin-top: 20px; " action="{{ route('login') }}" method="GET">
+        <input type="text" name="search" placeholder="Enter Quantity..." value="">
         <input type="submit" value="Add to Cart">
       </form>
     @else    
     @if (Auth::user()->roleid === 1)
       
     @else 
-    <form style="margin-top: 20px;" action="/products/{{$prod -> id}}/searchharga" method="GET">
-        <input type="text" name="search" placeholder="Enter Quantity..." value="{{ old('search') }}">
+    <form style="margin-top: 20px;" action="/cart/{{$prod->id}}" method="GET">
+        <input type="text" name="qty" placeholder="Enter Quantity...">
         <input type="submit" value="Add to Cart">
       </form>
     @endif 

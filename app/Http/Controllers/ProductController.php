@@ -1,11 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Cart;
 use Illuminate\Support\Facades\DB;
 
 use App\Category;
 use App\Product;
+use App\Transaction;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -17,29 +22,30 @@ class ProductController extends Controller
         return view('products', compact('category','flower'));
     }
 
-    public function search(Request $request)
+    public function search(Request $request, $id)
 	{
-		$search = $request->search;
+        //return $id;
+        $search = $request->search;
  
 		$flower = DB::table('product')
-		->where('productname','like',"%".$search."%")
-        ->simplePaginate(8);
-        $prod = Category::all()->first();
+		->where('productname','like',"%".$search."%")->get();
+        $category = Category::find($id)->first();
  
-		return view('products',['flower' => $flower, 'prod'=>$prod]);
+
+		return view('products', compact('flower', 'category'));
  
     }
     
     public function searchharga(Request $request)
 	{
-		$searchharga = $request->search;
- 
-		$flower = DB::table('product')
+        $searchharga = $request->search;
+        
+		$category = DB::table('product')
 		->where('productprice','like', $searchharga)
         ->simplePaginate(8);
         $prod = Category::all()->first();
  
-		return view('products',['flower' => $flower, 'prod'=>$prod]);
+		return view('products', compact('category', 'prod'));
  
     }
     
@@ -138,12 +144,50 @@ class ProductController extends Controller
         }
     }
 
-        public function delete($id)
+    public function delete($id)
     {
         $prod = Product::findOrFail($id);
         $prod->delete();
 
         return redirect('/home'); 
+    }
+
+    public function cart(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'qty' => 'required|numeric|min:1',
+        ]);
+        $harga = Product::findOrFail($id);
+        $subtotal = $request->qty * $harga->productprice;
+    
+        Cart::create([
+            'userid' => Auth::user()->id,
+            'productid'=> $id,
+            'qty' => $request->qty,
+            'subtotal' => $subtotal,
+        ]);
+
+        return view('/home');
+    }
+
+    public function showcart(){
+        $user = User::find(Auth::user()->id)->joinCart;
+
+
+       return view('cart', ['user'=>$user]);
+    }
+
+
+    public function transh(){
+        Transaction::create([
+            'userid' => Auth::user()->id,
+            'productid'=> $id,
+            'qty' => $request->qty,
+            'subtotal' => $subtotal,
+        ]);
+
+       return view('cart', ['user'=>$user]);
+
     }
 
 }

@@ -10,6 +10,14 @@ class Product extends Model
         return $this->belongsTo('App\Category', 'id', 'id');
     }
 
+    public function joinCart(){
+        return $this->belongsTo(Cart::class, 'id', 'id');
+    }
+
+    public function joinTransaction(){
+        return $this->belongsTo(Transaction::class, 'id', 'id');
+    }
+
     protected $table = 'product';
 
     protected $fillable = [

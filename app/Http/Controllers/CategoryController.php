@@ -18,8 +18,6 @@ class CategoryController extends Controller
     {
         $cate = Category::findOrFail($id);
         $cate->delete();
-        $prod = Product::where('catid', $id->catid);
-        $prod->delete();
 
         return redirect('/home'); 
     }

@@ -48,3 +48,8 @@ Route::get('/managec', 'CategoryController@show');
 Route::patch('/managec/{id}/delete', 'CategoryController@delete');
 
 Route::get('/updatec/{id}', 'UpdatecController@index');
+Route::get('/cart', 'ProductController@showcart');
+Route::get('/cart/{id}', 'ProductController@cart');
+
+Route::get('/co', 'ProductController@transh');
+
