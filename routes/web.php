@@ -52,4 +52,5 @@ Route::get('/cart', 'ProductController@showcart');
 Route::get('/cart/{id}', 'ProductController@cart');
 
 Route::get('/co', 'ProductController@transh');
+Route::get('/trans', 'ProductController@showtrans');
 

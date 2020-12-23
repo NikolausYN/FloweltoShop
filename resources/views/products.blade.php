@@ -9,11 +9,11 @@
             <h1 class="judul">Our {{$category->catname}} Collection</h1>
         </div>
         <form style="margin-top: 20px" action="/products/{{$category->id}}/search" method="GET">
-          <input type="text" name="search" placeholder="Search flower by name.." value="{{ old('search') }}">
+          <input type="text" name="search" placeholder="Search flower by name..">
           <input type="submit" value="SEARCH">
         </form>
         <form style="margin-top: 20px; margin-left: 50px" action="/products/{{$category-> id}}/searchharga" method="GET">
-          <input type="text" name="search" placeholder="Search flower by price.." value="{{ old('search') }}">
+          <input type="text" name="search" placeholder="Search flower by price..">
           <input type="submit" value="SEARCH">
         </form>
         </div>

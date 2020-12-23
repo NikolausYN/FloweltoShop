@@ -18,17 +18,10 @@
                 @csrf
     
                 <div class="form-group row">
-                    <label for="catname" class="col-md-4 col-form-label text-md-right">Quantity</label>
+                    <label for="qty" class="col-md-4 col-form-label text-md-right">Quantity</label>
     
                     <div class="col-md-6">
-                        <input id="catname" value="{{$i->qty}}" class="form-control" name="catname">
-                    </div>
-                </div>
-    
-                <div class="form-group row mb-0">
-                    <div class="col-md-8 offset-md-4">
-                        <button type="submit" class="btn btn-primary">Update</button>
-    
+                        <input id="qty" value="{{$i->qty}}" class="form-control" name="qty">
                     </div>
                 </div>
             </form>

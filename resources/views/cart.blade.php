@@ -18,10 +18,10 @@
                 @csrf
     
                 <div class="form-group row">
-                    <label for="catname" class="col-md-4 col-form-label text-md-right">Quantity</label>
+                    <label for="qty" class="col-md-4 col-form-label text-md-right">Quantity</label>
     
                     <div class="col-md-6">
-                        <input id="catname" value="{{$i->qty}}" class="form-control" name="catname">
+                        <input id="qty" value="{{$i->qty}}" class="form-control" name="qty">
                     </div>
                 </div>
     

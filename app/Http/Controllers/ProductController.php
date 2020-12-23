@@ -28,7 +28,7 @@ class ProductController extends Controller
         $search = $request->search;
  
 		$flower = DB::table('product')
-		->where('productname','like',"%".$search."%")->get();
+		->where('productname','like',"%".$search."%")->simplePaginate(8);
         $category = Category::find($id)->first();
  
 
@@ -36,22 +36,25 @@ class ProductController extends Controller
  
     }
     
-    public function searchharga(Request $request)
+    public function searchharga(Request $request, $id)
 	{
         $searchharga = $request->search;
         
-		$category = DB::table('product')
-		->where('productprice','like', $searchharga)
-        ->simplePaginate(8);
-        $prod = Category::all()->first();
+		$flower = DB::table('product')
+		->where('productprice','like', $searchharga)->simplePaginate(8);
+        $category = Category::find($id)->first();
  
-		return view('products', compact('category', 'prod'));
+		return view('products', compact('flower', 'category'));
  
     }
     
     public function update(Request $request,Product $prod){
         $cat = DB::table('category')->where('catname',$request->catname)->first();
         //return $cat->id;
+
+        $validated = Validator::make($input, $rules, $messages = [
+            'required' => 'The :attribute field is required.',
+        ]);
 
         if ($request->hasFile('productimg')) {
             if ($request->file('productimg')->isValid()) {
@@ -177,6 +180,12 @@ class ProductController extends Controller
        return view('cart', ['user'=>$user]);
     }
 
+    public function showtrans(){
+        $user = User::find(Auth::user()->id)->joinTransaction;
+
+
+       return view('trans', ['user'=>$user]);
+    }
 
     public function transh(){
         Transaction::create([
